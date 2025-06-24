@@ -59,7 +59,7 @@ fun ArcProgress() {
                 sweepAngle = sweepAngle,
                 useCenter = false,
                 size = Size(screenWidth, screenHeight),
-                topLeft = Offset(0f, 0f),
+                topLeft = Offset(0f, screenHeight / 2 - screenHeight / 2.6f),
                 style = Stroke(24.dp.toPx(), cap = StrokeCap.Round)
             )
 
@@ -69,7 +69,7 @@ fun ArcProgress() {
                 sweepAngle = animatedSweepAngle,
                 useCenter = false,
                 size = Size(screenWidth, screenHeight),
-                topLeft = Offset(0f, 0f),
+                topLeft = Offset(0f, screenHeight / 2 - screenHeight / 2.6f),
                 style = Stroke(16.dp.toPx(), cap = StrokeCap.Round)
             )
         }

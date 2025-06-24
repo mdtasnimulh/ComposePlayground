@@ -4,10 +4,10 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -16,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.AndroidPath
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -28,7 +27,7 @@ fun ArcProgress() {
 
     val startAngle = 150f
     val sweepAngle = 240f
-    val progress = remember { mutableFloatStateOf(0.70f) }
+    val progress = remember { mutableFloatStateOf(0.9f) }
     val progressSweepAngle = remember { mutableFloatStateOf(sweepAngle * progress.floatValue) }
 
     val animatedSweepAngle by animateFloatAsState(
@@ -37,14 +36,16 @@ fun ArcProgress() {
     )
 
     Box(
-        modifier = Modifier,
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight(),
         contentAlignment = Alignment.Center
     ) {
         Canvas(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(350.dp)
-                .padding(24.dp)
+                .padding(32.dp)
         ) {
             val screenWidth = size.width
             val screenHeight = size.height
@@ -64,7 +65,7 @@ fun ArcProgress() {
 
             drawArc(
                 color = lightStadiumGreen,
-                startAngle = 150f,
+                startAngle = startAngle,
                 sweepAngle = animatedSweepAngle,
                 useCenter = false,
                 size = Size(screenWidth, screenHeight),
